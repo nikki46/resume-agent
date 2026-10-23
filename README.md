@@ -1,10 +1,10 @@
-# Scout — a little guide to Nicole
+# Nicole Leon — an interactive resume
 
-An animated, conversational resume for Nicole Leon’s SDR application to LangChain. Six chapters connect her customer-facing work, leadership, process improvement, and technical curiosity. Scout is a custom SVG firefly guide.
+An animated, conversational resume for Nicole Leon’s SDR application to LangChain. Six chapters connect her customer-facing work, leadership, process improvement, and technical curiosity. Scout is a custom SVG lion guide.
 
 ## Stack
 
-React 19, TypeScript, Vinext/Vite, Tailwind CSS, Motion, LangChain.js, and OpenAI. Hosted on Sites (Cloudflare Workers). LangChain runs a tool-capable agent with `get_resume_chapter` and `suggest_chapter`; the browser controls tour progression. The site prominently credits LangChain. No visitor login or conversation database.
+React 19, TypeScript, Vinext/Vite, Tailwind CSS, Motion, LangChain.js, and OpenAI. Supports Next.js on Vercel and Vinext on Sites (Cloudflare Workers). LangChain runs a tool-capable agent with `get_resume_chapter` and `suggest_chapter`; the browser controls tour progression. The site prominently credits LangChain. No visitor login or conversation database.
 
 ## Run locally
 
@@ -33,7 +33,7 @@ node scripts/check-chat.mjs http://127.0.0.1:5173
 - `lib/resume.ts`: resume facts, chapters, recruiter topics, and explicit evidence gaps.
 - `lib/resume-notes.ts`: prepared notes for the seeded questions.
 - `components/scout-experience.tsx`: tour, chat, accessibility, and disclosure.
-- `components/scout-firefly.tsx`, `components/journey-art.tsx`: original vector illustrations.
+- `components/scout-lion.tsx`, `components/journey-art.tsx`: original vector illustrations.
 - `app/api/chat/route.ts`: LangChain agent, validation, error handling, and limits.
 
 A public, printable HTML resume is available at `/resume`; it links to the original source document. Its reported metrics are attributed to the resume. The branch’s #1 ranking is a team result. SDR connections are interpretations; no direct sales quota, pipeline, cold-call results, or independent authorship of this site are claimed.
@@ -48,7 +48,13 @@ The server validates chapter IDs, role values, input sizes, and same-origin brow
 
 Rate limits are best-effort per Worker isolate (10 requests/minute/IP and 250/hour/isolate), not durable global spending controls. For larger exposure, add platform-wide rate limiting and monitor API usage. Current limits reduce casual abuse but do not guarantee a hard spend cap.
 
-## Publishing
+## Vercel hosting
+
+Import `nikki46/resume-agent` into Vercel with the project name `nicole-leon-resume` (subject to availability). `vercel.json` selects Next.js and the standard Next production build. Configure `OPENAI_API_KEY` as a server-only environment variable in Vercel; optionally set `OPENAI_MODEL`. Use Node 22 or later. No database is needed. The public project domain does not need to include an account username.
+
+For a local Vercel-equivalent preview, use `npm run build:vercel` followed by `npm run start:vercel`. GitHub Pages cannot run the chat API, so it is not a complete hosting target for this app.
+
+## Sites publishing
 
 `.openai/hosting.json` records the existing Site ID; reuse it for updates. The Sites source mirror is a deployment requirement; `nikki46/resume-agent` remains Nicole’s application repository. Build and push the same source revision before publishing. A GitHub push alone does not deploy the Site. Public access is configured through Sites.
 

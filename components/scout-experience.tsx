@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Check, Code2, ExternalLink, Leaf, Link2, MessageCircle, RotateCcw, Send, Sparkles, Users, X } from "lucide-react";
 import { chapters, RESUME_URL } from "@/lib/resume";
-import ScoutFirefly from "./scout-firefly";
+import ScoutLion from "./scout-lion";
 import JourneyArt from "./journey-art";
 
 type Message = { role: "user" | "assistant"; content: string; chapter?: string; sources?: string[]; suggestedChapter?: string; error?: boolean; mode?: "live" | "resume-note" };
@@ -50,21 +50,21 @@ export default function ScoutExperience() {
   return <>
     <a className="skip-link" href="#journey">Skip to Nicole’s experience</a>
     <header className="site-header">
-      <a className="brand" href="#top" aria-label="Scout home"><ScoutFirefly/><span>scout<span className="brand-period">.</span></span><span className="brand-description">A LITTLE GUIDE TO NICOLE</span></a>
+      <a className="brand" href="#top" aria-label="Nicole Leon home"><span className="name-mark">Nicole Leon<span className="brand-period">.</span></span><span className="brand-description">PEOPLE. INITIATIVE. POSSIBILITY.</span></a>
       <nav aria-label="Main navigation"><button className="text-link" onClick={() => go(active, true)}>Explore her story <ArrowDown size={14}/></button><a className="resume-link" href={RESUME_URL} target="_blank" rel="noreferrer">View resume <ArrowUpRight size={15}/></a></nav>
     </header>
     <main id="top">
       <section className="hero page-width" aria-labelledby="hero-title">
         <div className="hero-copy">
-          <div className="eyebrow"><span className="green-dot"/> MEET NICOLE LEON</div>
-          <h1 id="hero-title">A people person.<br/>A problem solver.<br/><em>A little spark.</em></h1>
-          <p className="hero-description">There’s more to a person than a page.<br className="desktop-break"/> Get to know Nicole through the experiences that shaped her—with a curious little guide along the way.</p>
-          <div className="hero-actions"><button className="button primary" onClick={() => go(0, true)}>Follow the spark <ArrowRight size={17}/></button><span>6 chapters · your pace</span></div>
+          <div className="eyebrow"><span className="green-dot"/> PEOPLE-FIRST. CURIOSITY-LED.</div>
+          <h1 id="hero-title">Nicole<br/><em>Leon.</em></h1><p className="hero-tagline">A people person.<br/>A problem solver. A builder.</p>
+          <p className="hero-description">From earning trust on a busy team to making a process better, get to know the experiences—and the curiosity—Nicole brings to her next chapter.</p>
+          <div className="hero-actions"><button className="button primary" onClick={() => go(0, true)}>Explore Nicole’s story <ArrowRight size={17}/></button><span>6 chapters · your pace</span></div>
           <div className="application-note"><span className="note-line"/> An interactive resume for an <strong>SDR role at LangChain</strong></div>
         </div>
         <JourneyArt/>
       </section>
-      <div className="built-strip"><span><Link2 size={15}/> Built with <a href="https://www.langchain.com/" target="_blank" rel="noreferrer">LangChain <ArrowUpRight size={12}/></a></span><span className="strip-divider"/><span>Real experience. A more human introduction.</span><button onClick={() => setShowAbout(true)}>How Scout works <ArrowUpRight size={13}/></button></div>
+      <div className="built-strip"><span><Link2 size={15}/> Built with <a href="https://www.langchain.com/" target="_blank" rel="noreferrer">LangChain <ArrowUpRight size={12}/></a></span><span className="strip-divider"/><span>Real experience. A more human introduction.</span><button onClick={() => setShowAbout(true)}>About the AI guide <ArrowUpRight size={13}/></button></div>
       <section id="journey" className="journey-section page-width" aria-labelledby="journey-title">
         <div className="section-heading"><div><div className="eyebrow muted">A FEW STOPS ALONG THE WAY</div><h2 id="journey-title">Every chapter adds something.</h2></div><span className="progress-label">{visited.length} of 6 explored <span className="progress-track"><span style={{ width: `${visited.length / 6 * 100}%` }}/></span></span></div>
         <div className="chapter-nav" role="tablist" aria-label="Resume chapters">
@@ -84,7 +84,7 @@ export default function ScoutExperience() {
             <div className="chapter-controls"><button className="previous" onClick={() => go(active - 1, true)} disabled={active === 0}><ArrowLeft size={16}/> Previous</button><span>{active + 1} / 6</span><button className="next" onClick={() => go(active === 5 ? 0 : active + 1, true)}>{active === 5 ? "Back to the beginning" : "Next chapter"} {active === 5 ? <RotateCcw size={15}/> : <ArrowRight size={16}/>}</button></div>
           </div>
           <aside className="chat-panel" aria-label="Chat with Scout">
-            <div className="chat-header"><div className="scout-avatar"><ScoutFirefly/></div><div><h3>A little help from Scout</h3><span><span className="status-dot"/> Your guide to Nicole’s story</span></div><button aria-label="Clear conversation" title="Clear conversation" disabled={busy || !messages.length} className="icon-button" onClick={() => setMessages([])}><RotateCcw size={15}/></button></div>
+            <div className="chat-header"><div className="scout-avatar"><ScoutLion/></div><div><h3>Ask about Nicole</h3><span><span className="status-dot"/> With Scout, her AI guide</span></div><button aria-label="Clear conversation" title="Clear conversation" disabled={busy || !messages.length} className="icon-button" onClick={() => setMessages([])}><RotateCcw size={15}/></button></div>
             <div className="chat-scroll" ref={chatArea} role="log" aria-live="polite" aria-relevant="additions" aria-label="Conversation">
               <div className="welcome-message"><span className="message-author">SCOUT</span><p>{chapter.welcome}</p></div>
               {messages.map((m, i) => <div className={`chat-message ${m.role} ${m.error ? "chat-error" : ""}`} key={i}><span className="message-author">{m.role === "user" ? "YOU" : m.error ? "A QUICK NOTE" : m.mode === "resume-note" ? "PREPARED RESUME NOTE" : "SCOUT"}</span><p>{m.content}</p>{m.sources && <div className="answer-source"><BookOpen size={11}/> Based on Nicole’s resume &amp; approved site context</div>}{m.suggestedChapter && m.suggestedChapter !== chapter.id && <button className="jump-link" onClick={() => go(chapters.findIndex(c => c.id === m.suggestedChapter))}>Explore {chapters.find(c => c.id === m.suggestedChapter)?.label.toLowerCase()} <ArrowRight size={13}/></button>}{m.error && <button className="jump-link" disabled={busy} onClick={() => { const prior = messages.slice(0, i).reverse().find(v => v.role === "user"); if(prior) ask(prior.content); }}>Try again <RotateCcw size={12}/></button>}</div>)}
@@ -100,9 +100,9 @@ export default function ScoutExperience() {
         </div>
         <div className="pause-note"><span>✧</span> Take your time. Ask a question. The next chapter can wait.</div>
       </section>
-      <section className="closing page-width"><div><span className="eyebrow">THE PERSON BEHIND THE PAGE</span><h2>Some things are best<br/>discovered in conversation.</h2><p>Scout can show you the highlights.<br/>Nicole can tell you the stories behind them.</p><a className="button primary" href={RESUME_URL} target="_blank" rel="noreferrer">Read Nicole’s resume <ArrowUpRight size={17}/></a></div><div className="closing-scout"><ScoutFirefly happy/><span>Thanks for wandering with me.</span></div></section>
+      <section className="closing page-width"><div><span className="eyebrow">THE PERSON BEHIND THE PAGE</span><h2>Some things are best<br/>discovered in conversation.</h2><p>You’ve seen the highlights.<br/>Nicole can tell you the stories behind them.</p><a className="button primary" href={RESUME_URL} target="_blank" rel="noreferrer">Read Nicole’s resume <ArrowUpRight size={17}/></a></div></section>
     </main>
-    <footer className="page-width"><span className="footer-brand">scout.</span><p>A little guide to Nicole Leon.</p><button onClick={() => setShowAbout(true)}>Built with LangChain <Link2 size={14}/></button><a href="https://github.com/nikki46/resume-agent" target="_blank" rel="noreferrer">View source <ArrowUpRight size={12}/></a></footer>
-    <dialog aria-labelledby="about-title" ref={aboutDialog} onCancel={() => setShowAbout(false)} onClick={e => { if(e.target === aboutDialog.current) setShowAbout(false); }} className="about-dialog"><button className="dialog-close icon-button" aria-label="Close about Scout" onClick={() => setShowAbout(false)}><X size={20}/></button><ScoutFirefly className="dialog-scout"/><div className="eyebrow">A LITTLE TRANSPARENCY</div><h2 id="about-title">Curious by design.<br/>Grounded in Nicole.</h2><p>Scout is an AI guide built with <strong>LangChain.js</strong> and OpenAI. It uses Nicole’s supplied resume and approved site context to answer questions and help you explore her experience.</p><p>It speaks about Nicole, not as her. When a personal story or detail hasn’t been supplied, Scout will say so. Connections to SDR work are interpretations, not claims of prior sales results.</p><p>Your messages are sent to the AI provider to generate replies. This app does not save your conversation to a database; it disappears when you reload. Please avoid sharing sensitive information.</p><p className="small-print">An independent candidate project, built with assistance. Not affiliated with or endorsed by LangChain. Company context checked October 2026.</p><a className="text-link" href="https://www.langchain.com/oss-overview" target="_blank" rel="noreferrer">Learn about LangChain <ArrowUpRight size={14}/></a></dialog>
+    <footer className="page-width"><span className="footer-brand">Nicole Leon.</span><p>An interactive introduction.</p><button onClick={() => setShowAbout(true)}>Built with LangChain <Link2 size={14}/></button><a href="https://github.com/nikki46/resume-agent" target="_blank" rel="noreferrer">View source <ArrowUpRight size={12}/></a></footer>
+    <dialog aria-labelledby="about-title" ref={aboutDialog} onCancel={() => setShowAbout(false)} onClick={e => { if(e.target === aboutDialog.current) setShowAbout(false); }} className="about-dialog"><button className="dialog-close icon-button" aria-label="Close about Scout" onClick={() => setShowAbout(false)}><X size={20}/></button><ScoutLion className="dialog-scout"/><div className="eyebrow">A LITTLE TRANSPARENCY</div><h2 id="about-title">Curious by design.<br/>Grounded in Nicole.</h2><p>Scout is an AI guide built with <strong>LangChain.js</strong> and OpenAI. It uses Nicole’s supplied resume and approved site context to answer questions and help you explore her experience.</p><p>It speaks about Nicole, not as her. When a personal story or detail hasn’t been supplied, Scout will say so. Connections to SDR work are interpretations, not claims of prior sales results.</p><p>Your messages are sent to the AI provider to generate replies. This app does not save your conversation to a database; it disappears when you reload. Please avoid sharing sensitive information.</p><p className="small-print">An independent candidate project, built with assistance. Not affiliated with or endorsed by LangChain. Company context checked October 2026.</p><a className="text-link" href="https://www.langchain.com/oss-overview" target="_blank" rel="noreferrer">Learn about LangChain <ArrowUpRight size={14}/></a></dialog>
   </>;
 }
