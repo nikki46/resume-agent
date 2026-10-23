@@ -189,3 +189,5 @@ footer p,footer button{font-size:13px}
 .resume-entry>.organization-logo{margin-bottom:16px}
 @media(max-width:760px){.organization.organization-with-logo{flex-wrap:wrap;gap:12px}.organization-logo{height:52px;width:156px}.organization-logo--sf-state{width:196px}}
 @media print{.organization-logo{width:128px;height:40px;break-inside:avoid;print-color-adjust:exact;-webkit-print-color-adjust:exact}.organization-logo--sf-state{width:165px}.resume-entry>.organization-logo{margin-bottom:8px}}
+
+.closing .contact-email{display:block;margin-top:12px;font-size:15px;color:var(--muted);overflow-wrap:anywhere}

@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Check, Code2, ExternalLink, Leaf, Link2, MessageCircle, RotateCcw, Send, Sparkles, Users, X } from "lucide-react";
-import { chapters, RESUME_URL } from "@/lib/resume";
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Check, Code2, ExternalLink, Leaf, Link2, Mail, MessageCircle, RotateCcw, Send, Sparkles, Users, X } from "lucide-react";
+import { chapters, RESUME_URL, CONTACT_EMAIL } from "@/lib/resume";
 import ScoutLion from "./scout-lion";
 import JourneyArt from "./journey-art";
 import OrganizationLogo from "./organization-logo";
@@ -110,7 +110,7 @@ export default function ScoutExperience() {
         </div>
         <div className="pause-note"><span>✧</span> Take your time. Ask a question. The next chapter can wait.</div>
       </section>
-      <section className="closing page-width"><div><span className="eyebrow">THE PERSON BEHIND THE PAGE</span><h2>Some things are best<br/>discovered in conversation.</h2><p>You’ve seen the highlights.<br/>Nicole can tell you the stories behind them.</p><a className="button primary" href={RESUME_URL} target="_blank" rel="noreferrer">Read Nicole’s resume <ArrowUpRight size={17}/></a></div></section>
+      <section className="closing page-width"><div><span className="eyebrow">THE PERSON BEHIND THE PAGE</span><h2>Some things are best<br/>discovered in conversation.</h2><p>You’ve seen the highlights.<br/>Nicole can tell you the stories behind them.</p><a className="button primary" href={`mailto:${CONTACT_EMAIL}`}>Contact Nicole <Mail size={17}/></a><span className="contact-email">{CONTACT_EMAIL}</span></div></section>
     </main>
     <footer className="page-width"><span className="footer-brand">Nicole Leon.</span><p>An interactive introduction.</p><button onClick={() => setShowAbout(true)}>Built with LangChain <Link2 size={14}/></button><a href="https://github.com/nikki46/resume-agent" target="_blank" rel="noreferrer">View source <ArrowUpRight size={12}/></a></footer>
     <dialog aria-labelledby="about-title" ref={aboutDialog} onCancel={() => setShowAbout(false)} onClick={e => { if(e.target === aboutDialog.current) setShowAbout(false); }} className="about-dialog"><button className="dialog-close icon-button" aria-label="Close about Scout" onClick={() => setShowAbout(false)}><X size={20}/></button><ScoutLion className="dialog-scout"/><div className="eyebrow">A LITTLE TRANSPARENCY</div><h2 id="about-title">Curious by design.<br/>Grounded in Nicole.</h2><p>Scout is an AI guide built with <strong>LangChain.js</strong> and OpenAI. It uses Nicole’s supplied resume and approved site context to answer questions and help you explore her experience.</p><p>It speaks about Nicole, not as her. When a personal story or detail hasn’t been supplied, Scout will say so. Connections to SDR work are interpretations. Restaurant sales and branch rankings are team results, not individual sales quotas.</p><p>Your messages are sent to the AI provider to generate replies. This app does not save your conversation to a database; it disappears when you reload. Please avoid sharing sensitive information.</p><p className="small-print">An independent candidate project, built with assistance. Not affiliated with or endorsed by LangChain. Company context checked October 2026.</p><a className="text-link" href="https://www.langchain.com/oss-overview" target="_blank" rel="noreferrer">Learn about LangChain <ArrowUpRight size={14}/></a></dialog>

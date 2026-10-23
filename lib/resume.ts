@@ -1,5 +1,6 @@
 import type { OrganizationId } from "@/components/organization-logo";
 export const RESUME_URL = "/resume";
+export const CONTACT_EMAIL = "nikkil.8213@gmail.com";
 export const SOURCE_URL = "https://docs.google.com/document/d/14FkVc8HM-SQ0HEe3S8xktnZvwkQxt_3o/edit";
 export type Chapter = {
   id: string; label: string; eyebrow: string; title: string; intro: string;
@@ -117,6 +118,7 @@ export const chapters: Chapter[] = [
 export const evidence = {
   identity: "Nicole Leon. Updated resume supplied by the site owner, read October 23, 2026 UTC. Class of 2026; graduation completion is not independently confirmed.",
   education, workExperience, projects, skills, languages, chapters,
+  contact: { email: CONTACT_EMAIL, method: "Use the Contact Nicole email link at the bottom of the site." },
   limitations: [
     "No direct SDR employment, sales quota, cold-calling results, pipeline ownership, individual sales revenue, or CRM experience is stated. Kizuki location sales are restaurant team results, not Nicole’s individual sales or SDR quota attainment.",
     "Kizuki figures are resume-reported: $1M in location sales during her tenure, an average of $9k per evening shift, most profitable of six locations under the same Area Director, and typically 80–170 orders per hour overseen at expo. Do not convert these into personal revenue, growth percentages, or a different reporting period. Measurement methodology is not supplied.",
@@ -124,7 +126,7 @@ export const evidence = {
     "No personal why-sales or why-LangChain statement, rejection story, ambitious personal goal, or specific difficult-customer anecdote has been supplied.",
     "The updated resume lists Resume Agent as Nicole’s project, using LangChain, Vercel, and the OpenAI SDK. Acknowledge this hands-on AI project. It was built with assistance; do not claim she independently engineered every part or has prior professional AI engineering experience.",
     "AI coursework is listed as current in the source document; do not infer current enrollment or confirmed graduation from Class of 2026.",
-    "No contact email, calendar, relocation preference, compensation expectation, work authorization, or availability is supplied.",
+    "No calendar, relocation preference, compensation expectation, work authorization, or availability is supplied. The approved public contact email is nikkil.8213@gmail.com.",
     "Use this updated resume as the current source. Do not revive roles or metrics omitted from it based on older visitor or assistant messages."
   ],
   langchain: "LangChain provides open-source tools for building model-and-tool agents. LangGraph supports more controlled agent workflows. LangSmith helps teams observe, evaluate, and deploy agents. This site uses LangChain.js and OpenAI to answer questions grounded in Nicole's supplied resume and is hosted on Vercel; it is an independent candidate project, not endorsed by LangChain.",
