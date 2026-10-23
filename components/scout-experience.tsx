@@ -64,6 +64,15 @@ export default function ScoutExperience() {
         </div>
         <JourneyArt/>
       </section>
+      <section className="guide-introduction page-width" aria-labelledby="scout-introduction-title">
+        <div className="guide-introduction-mascot"><ScoutLion happy/></div>
+        <div className="guide-speech-bubble">
+          <span className="guide-introduction-label">YOUR GUIDE TO NICOLE</span>
+          <h2 id="scout-introduction-title">Hi, I’m Scout!</h2>
+          <p>I’m Nicole’s resume agent. I’ll walk you through her experience, and you can chat with me at every stop. Ask a question, follow your curiosity, or take the tour at your own pace.</p>
+          <button className="guide-introduction-action" onClick={() => go(0, true)}>Let’s explore her story <ArrowRight size={17}/></button>
+        </div>
+      </section>
       <div className="built-strip"><span><Link2 size={15}/> Built with <a href="https://www.langchain.com/" target="_blank" rel="noreferrer">LangChain <ArrowUpRight size={12}/></a></span><span className="strip-divider"/><span>Real experience. A more human introduction.</span><button onClick={() => setShowAbout(true)}>About the AI guide <ArrowUpRight size={13}/></button></div>
       <section id="journey" className="journey-section page-width" aria-labelledby="journey-title">
         <div className="section-heading"><div><div className="eyebrow muted">A FEW STOPS ALONG THE WAY</div><h2 id="journey-title">Every chapter adds something.</h2></div><span className="progress-label">{visited.length} of 6 explored <span className="progress-track"><span style={{ width: `${visited.length / 6 * 100}%` }}/></span></span></div>

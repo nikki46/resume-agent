@@ -103,14 +103,25 @@ footer p,footer button{font-size:13px}
 @media print{.resume-page h1{font-size:32px}.resume-page h2{font-size:19px}.resume-entry-title h3{font-size:12px}.resume-entry-title span,.resume-page header p{font-size:10px}.resume-page p,.resume-page li{font-size:10px}}
 
 /* A personal introduction, with Scout in a supporting role. */
-.portrait-card{position:relative;margin:0 auto;width:100%;max-width:455px;padding:25px 25px 110px;background:#edf0e3;border:1px solid #dfe4d3;border-radius:220px 220px 18px 18px}
+.portrait-card{position:relative;margin:0 auto;width:100%;max-width:455px;padding:25px 25px 30px;background:#edf0e3;border:1px solid #dfe4d3;border-radius:220px 220px 18px 18px}
 .portrait-frame{overflow:hidden;border-radius:190px 190px 14px 14px;border:6px solid #faf9f2;box-shadow:0 10px 35px #304f3410}
 .portrait-frame img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover}
 .portrait-card figcaption{padding:23px 4px 0;text-align:center}
 .portrait-caption{font-family:Georgia,serif;font-size:25px;line-height:1.3;display:block;color:#3f5944}
 .portrait-note{display:block;font-size:14px;color:#6c7962;line-height:1.6;margin-top:8px}
 .portrait-decoration{position:absolute;right:13px;top:29px;color:#a58b43;font-size:48px;transform:rotate(15deg)}
-.portrait-guide{position:absolute;bottom:15px;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:8px}
-.portrait-guide svg{width:62px;height:62px;transform:rotate(-5deg)}
-.portrait-guide span{font-family:Georgia,serif;font-size:14px;font-style:italic;color:#778268}
-@media(max-width:760px){.portrait-card{max-width:400px;padding:20px 20px 92px}.portrait-caption{font-size:23px}.portrait-note{font-size:13px}.portrait-guide{bottom:12px}.portrait-guide svg{width:55px;height:55px}.portrait-decoration{font-size:38px;right:12px;top:25px}}
+@media(max-width:760px){.portrait-card{max-width:400px;padding:20px 20px 25px}.portrait-caption{font-size:23px}.portrait-note{font-size:13px}.portrait-decoration{font-size:38px;right:12px;top:25px}}
+
+/* Scout greets visitors in his own conversation bubble. */
+.guide-introduction{display:flex;align-items:center;justify-content:center;gap:28px;padding-bottom:50px;max-width:930px}
+.guide-introduction-mascot{width:108px;flex-shrink:0;align-self:center}
+.guide-introduction-mascot svg{display:block;width:100%;height:auto;transform:rotate(-5deg)}
+.guide-speech-bubble{position:relative;background:#fffef8;border:1px solid #d8dfcd;border-radius:22px;padding:27px 32px;box-shadow:0 5px 20px #304f3405}
+.guide-speech-bubble:before{content:"";position:absolute;left:-9px;top:calc(50% - 9px);width:17px;height:17px;background:#fffef8;border-left:1px solid #d8dfcd;border-bottom:1px solid #d8dfcd;transform:rotate(45deg)}
+.guide-introduction-label{display:block;font-size:11px;letter-spacing:1.4px;color:#748367;font-weight:600;margin-bottom:8px}
+.guide-speech-bubble h2{font:29px/1.25 Georgia,serif;color:#314f3d;margin-bottom:10px}
+.guide-speech-bubble p{font-size:16px;line-height:1.75;color:#63715b;max-width:660px}
+.guide-introduction-action{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;margin-top:15px;padding:5px 0;color:#365a45;text-decoration:underline;text-underline-offset:5px;text-decoration-color:#c3cdb7}
+.guide-introduction-action:hover{color:#193c2b;text-decoration-color:currentColor}
+@media(max-width:760px){.guide-introduction{gap:17px;align-items:flex-start;padding-bottom:35px}.guide-introduction-mascot{width:64px;align-self:flex-start;margin-top:31px}.guide-speech-bubble{padding:22px 20px;border-radius:17px}.guide-speech-bubble:before{top:52px}.guide-speech-bubble h2{font-size:26px}.guide-introduction-label{font-size:10px;line-height:1.6}.guide-speech-bubble p{font-size:16px}.guide-introduction-action{font-size:14px;text-align:left;line-height:1.6}}
+@media(max-width:420px){.guide-introduction{display:block;position:relative;padding-top:62px}.guide-introduction-mascot{position:absolute;top:-8px;left:13px;width:76px;margin:0}.guide-speech-bubble{padding:23px}.guide-speech-bubble:before{top:-9px;left:42px;transform:rotate(135deg)}.guide-speech-bubble h2{font-size:28px}}
