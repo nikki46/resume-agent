@@ -125,3 +125,44 @@ footer p,footer button{font-size:13px}
 .guide-introduction-action:hover{color:#193c2b;text-decoration-color:currentColor}
 @media(max-width:760px){.guide-introduction{gap:17px;align-items:flex-start;padding-bottom:35px}.guide-introduction-mascot{width:64px;align-self:flex-start;margin-top:31px}.guide-speech-bubble{padding:22px 20px;border-radius:17px}.guide-speech-bubble:before{top:52px}.guide-speech-bubble h2{font-size:26px}.guide-introduction-label{font-size:10px;line-height:1.6}.guide-speech-bubble p{font-size:16px}.guide-introduction-action{font-size:14px;text-align:left;line-height:1.6}}
 @media(max-width:420px){.guide-introduction{display:block;position:relative;padding-top:62px}.guide-introduction-mascot{position:absolute;top:-8px;left:13px;width:76px;margin:0}.guide-speech-bubble{padding:23px}.guide-speech-bubble:before{top:-9px;left:42px;transform:rotate(135deg)}.guide-speech-bubble h2{font-size:28px}}
+
+/* Keep the tour and chat controls together on laptop-sized screens. */
+@media (min-width:1024px) and (min-height:600px){
+ .journey-section{padding-top:22px}
+ .section-heading h2{font-size:32px;line-height:1.15;margin-top:5px}
+ .chapter-nav{margin-top:12px}
+ .chapter-tab{padding:12px 0}
+ .journey-grid{height:min(740px,calc(100dvh - 245px));margin-top:16px;gap:30px}
+ .story-panel{min-height:0;height:100%}
+ .story-panel article{min-height:0;overflow-y:auto;padding-right:10px;scrollbar-width:thin;scrollbar-color:#cbd5be transparent;overscroll-behavior:contain}
+ .story-top{min-height:32px}
+ .chapter-symbol{width:32px;height:32px}
+ .chapter-symbol svg{width:18px;height:18px}
+ .story-panel h3{font-size:34px;margin:10px 0;line-height:1.15}
+ .chapter-intro{font-size:16px;line-height:1.65;max-width:none}
+ .organization{margin-top:16px;gap:3px}
+ .facts-stat{margin-top:15px;gap:18px}
+ .facts li{line-height:1.6;margin-bottom:10px}
+ .facts li:before{top:10px}
+ .stat-card{padding:13px 12px;gap:7px}
+ .stat-card strong{font-size:35px}
+ .takeaway{padding:13px 15px;margin-top:8px}
+ .takeaway p{line-height:1.6}
+ .source-link{margin-top:12px;margin-bottom:4px}
+ .chapter-controls{flex-shrink:0;margin-top:12px;padding-top:12px;min-height:38px}
+ .chat-panel{position:static;height:100%;min-height:0;max-height:none}
+ .chat-header{padding:13px 18px;flex-shrink:0}
+ .chat-header h3{font-size:23px}
+ .chat-header>div>span{margin-top:4px}
+ .chat-scroll{min-height:0;max-height:none;padding:16px 20px}
+ .welcome-message p,.chat-message p{line-height:1.65}
+ .chat-bottom{padding:12px 16px 10px;flex-shrink:0}
+ .question-label{margin-bottom:7px}
+ .suggestions{gap:6px}
+ .suggestions button{padding:8px 11px;line-height:1.4}
+ .chat-form{margin-top:11px;padding:5px}
+ .chat-form input{padding:7px}
+ .chat-form button{width:34px;height:34px}
+ .chat-disclaimer{margin-top:6px}
+ .pause-note{margin-top:12px;font-size:14px;line-height:1.5}
+}

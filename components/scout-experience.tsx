@@ -81,7 +81,7 @@ export default function ScoutExperience() {
         </div>
         <div className="journey-grid">
           <div id="chapter-panel" role="tabpanel" aria-labelledby={`tab-${chapter.id}`} tabIndex={0} className="story-panel">
-            <AnimatePresence mode="wait" initial={false}><motion.article key={chapter.id} initial={{ opacity: 0, y: reduced ? 0 : 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: reduced ? 0 : -8 }} transition={{ duration: reduced ? 0 : .22 }}>
+            <AnimatePresence mode="wait" initial={false}><motion.article key={chapter.id} tabIndex={0} aria-label={`${chapter.label} resume details`} initial={{ opacity: 0, y: reduced ? 0 : 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: reduced ? 0 : -8 }} transition={{ duration: reduced ? 0 : .22 }}>
               <div className="story-top"><span className="eyebrow muted">{chapter.eyebrow}</span><span className="chapter-symbol"><Icon size={22} strokeWidth={1.5}/></span></div>
               <h3>{chapter.title.split("\n").map((line, i) => <span key={line}>{line}{i === 0 && <br/>}</span>)}</h3>
               <p className="chapter-intro">{chapter.intro}</p>
