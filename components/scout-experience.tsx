@@ -5,6 +5,7 @@ import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Check, Code2,
 import { chapters, RESUME_URL, CONTACT_EMAIL } from "@/lib/resume";
 import ScoutLion from "./scout-lion";
 import JourneyArt from "./journey-art";
+import BehindTheScenes from "./behind-the-scenes";
 import OrganizationLogo from "./organization-logo";
 
 type Message = { role: "user" | "assistant"; content: string; chapter?: string; sources?: string[]; suggestedChapter?: string; error?: boolean; mode?: "live" | "resume-note" };
@@ -110,6 +111,7 @@ export default function ScoutExperience() {
         </div>
         <div className="pause-note"><span>✧</span> Take your time. Ask a question. The next chapter can wait.</div>
       </section>
+      <BehindTheScenes/>
       <section className="closing page-width"><div><span className="eyebrow">THE PERSON BEHIND THE PAGE</span><h2>Some things are best<br/>discovered in conversation.</h2><p>You’ve seen the highlights.<br/>Nicole can tell you the stories behind them.</p><a className="button primary" href={`mailto:${CONTACT_EMAIL}`}>Contact Nicole <Mail size={17}/></a><span className="contact-email">{CONTACT_EMAIL}</span></div></section>
     </main>
     <footer className="page-width"><span className="footer-brand">Nicole Leon.</span><p>An interactive introduction.</p><button onClick={() => setShowAbout(true)}>Built with LangChain <Link2 size={14}/></button><a href="https://github.com/nikki46/resume-agent" target="_blank" rel="noreferrer">View source <ArrowUpRight size={12}/></a></footer>

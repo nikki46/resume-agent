@@ -191,3 +191,27 @@ footer p,footer button{font-size:13px}
 @media print{.organization-logo{width:128px;height:40px;break-inside:avoid;print-color-adjust:exact;-webkit-print-color-adjust:exact}.organization-logo--sf-state{width:165px}.resume-entry>.organization-logo{margin-bottom:8px}}
 
 .closing .contact-email{display:block;margin-top:12px;font-size:15px;color:var(--muted);overflow-wrap:anywhere}
+
+/* A compact look at the project behind the conversation. */
+.behind-scenes{margin-top:44px;padding:30px;border:1px solid #dce2d2;border-radius:18px;background:#f0f2e9}
+.behind-scenes-heading{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.behind-scenes h2{font:32px/1.2 Georgia,serif;letter-spacing:-.6px;margin-top:8px}
+.behind-scenes-heading>a{font-size:14px;white-space:nowrap;color:#365744;text-decoration:underline;text-underline-offset:4px}
+.behind-scenes-intro{font-size:16px;line-height:1.7;color:#65715c;max-width:780px;margin-top:13px}
+.behind-scenes-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;margin-top:26px}
+.behind-scenes h3{display:flex;align-items:center;gap:9px;font-size:16px;font-weight:600;margin-bottom:14px}
+.tech-stack{display:grid;grid-template-columns:1fr 1fr;gap:12px;list-style:none;padding:0;margin:0}
+.tech-stack li{display:flex;align-items:flex-start;gap:11px;padding:16px;background:#fffef8;border:1px solid #e1e5d8;border-radius:10px}
+.tech-stack li>svg{color:#789068;margin-top:2px}
+.tech-stack strong,.scout-flow strong{font-size:15px;font-weight:600}
+.tech-stack p,.scout-flow p{font-size:14px;line-height:1.6;color:#65715c;margin-top:5px}
+.behind-scenes .stack-detail{font-size:13px;line-height:1.65;color:#6a765f;margin-top:12px}
+.scout-flow{padding-left:28px;border-left:1px solid #d7decb}
+.scout-flow ol{list-style:none;padding:0;margin:0;display:grid;gap:17px}
+.scout-flow li{display:flex;align-items:flex-start;gap:13px}
+.scout-flow li>span{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;flex-shrink:0;background:#e3e9d8;color:#4f6846;font-size:11px;margin-top:1px}
+.behind-scenes-note{display:flex;align-items:flex-start;gap:10px;margin-top:23px;padding-top:17px;border-top:1px solid #d7decb;color:#6a765f}
+.behind-scenes-note>svg{margin-top:3px}
+.behind-scenes-note p{font-size:13px;line-height:1.7;max-width:1000px}
+@media(max-width:900px){.behind-scenes-grid{grid-template-columns:1fr;gap:24px}.scout-flow{padding:23px 0 0;border-left:0;border-top:1px solid #d7decb}.behind-scenes-heading{align-items:flex-start;flex-direction:column;gap:15px}}
+@media(max-width:520px){.behind-scenes{padding:23px 20px;margin-top:32px}.behind-scenes h2{font-size:29px}.tech-stack{grid-template-columns:1fr}.tech-stack li{padding:14px}.tech-stack p,.scout-flow p{font-size:15px}.behind-scenes-note p,.behind-scenes .stack-detail{font-size:14px}}
