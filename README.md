@@ -50,7 +50,9 @@ Rate limits are best-effort per Worker isolate (10 requests/minute/IP and 250/ho
 
 ## Vercel hosting
 
-Import `nikki46/resume-agent` into Vercel with the project name `nicole-leon-resume` (subject to availability). `vercel.json` selects Next.js and the standard Next production build. Configure `OPENAI_API_KEY` as a server-only environment variable in Vercel; optionally set `OPENAI_MODEL`. Use Node 22 or later. No database is needed. The public project domain does not need to include an account username.
+Production: https://nicole-leon-resume.vercel.app
+
+Vercel project: `sirui-test1/nicole-leon-resume`. The initial production release was deployed directly from this checkout. GitHub auto-deployment is not yet connected: Vercel requires a GitHub Login Connection before it can link `nikki46/resume-agent`. `vercel.json` selects Next.js and the standard Next production build. `OPENAI_API_KEY` is configured as a production-only Secret in Vercel. `OPENAI_MODEL` is optional. Use Node 22 or later. No database is needed. The public domain contains no account username. `.vercelignore` excludes local secrets and generated build folders from uploads.
 
 For a local Vercel-equivalent preview, use `npm run build:vercel` followed by `npm run start:vercel`. GitHub Pages cannot run the chat API, so it is not a complete hosting target for this app.
 
@@ -59,5 +61,8 @@ For a local Vercel-equivalent preview, use `npm run build:vercel` followed by `n
 `.openai/hosting.json` records the existing Site ID; reuse it for updates. The Sites source mirror is a deployment requirement; `nikki46/resume-agent` remains Nicole’s application repository. Build and push the same source revision before publishing. A GitHub push alone does not deploy the Site. Public access is configured through Sites.
 
 ## Verification status
+
+The Vercel production build succeeded on October 22, 2026. Its public chat endpoint passed all six validation and response checks with a live AI answer; no visitor login was required. Nicole’s portrait, larger typography, and supporting lion mascot were checked at desktop and mobile widths before migration.
+
 
 Type checking and the production build passed. The browser tour, desktop/mobile layouts, modal, seeded-question fallback, input validation, and unavailable-state handling are tested during initial development. An initial local API check returned `credit_balance_exhausted`. After deployment, the public endpoint successfully generated live replies. Hosted tests confirmed that Scout treats the branch ranking as a team achievement, acknowledges missing personal motivations/rejection stories, and refuses fabricated sales claims or requests for secrets. The hosted endpoint also passed six validation and response checks. Model behavior is probabilistic; these are representative checks, not a guarantee for every prompt.
