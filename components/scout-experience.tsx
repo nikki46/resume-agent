@@ -69,8 +69,8 @@ export default function ScoutExperience() {
         <JourneyArt/>
       </section>
       <section className="guide-introduction page-width" aria-labelledby="scout-introduction-title">
-        <div className="guide-introduction-mascot" data-reveal><PlayfulScout happy hint label="Play with Scout in the introduction"/></div>
-        <div className="guide-speech-bubble" data-reveal data-reveal-delay="100">
+        <div className="guide-introduction-mascot" data-reveal><PlayfulScout happy label="Play with Scout in the introduction"/></div>
+        <div className="guide-introduction-copy" data-reveal data-reveal-delay="100">
           <span className="guide-introduction-label">YOUR GUIDE TO NICOLE</span>
           <h2 id="scout-introduction-title">Hi, I’m Scout!</h2>
           <p>I’m Nicole’s resume agent. I’ll walk you through her experience, and you can chat with me at every stop. Ask a question, follow your curiosity, or take the tour at your own pace.</p>
