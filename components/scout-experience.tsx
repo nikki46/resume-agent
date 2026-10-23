@@ -5,6 +5,7 @@ import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Check, Code2,
 import { chapters, RESUME_URL } from "@/lib/resume";
 import ScoutLion from "./scout-lion";
 import JourneyArt from "./journey-art";
+import OrganizationLogo from "./organization-logo";
 
 type Message = { role: "user" | "assistant"; content: string; chapter?: string; sources?: string[]; suggestedChapter?: string; error?: boolean; mode?: "live" | "resume-note" };
 const icons = [Sparkles, MessageCircle, Users, BookOpen, Code2, Leaf];
@@ -85,7 +86,7 @@ export default function ScoutExperience() {
               <div className="story-top"><span className="eyebrow muted">{chapter.eyebrow}</span><span className="chapter-symbol"><Icon size={22} strokeWidth={1.5}/></span></div>
               <h3>{chapter.title.split("\n").map((line, i) => <span key={line}>{line}{i === 0 && <br/>}</span>)}</h3>
               <p className="chapter-intro">{chapter.intro}</p>
-              <div className="organization"><strong>{chapter.organization}</strong><span>{chapter.dates}</span></div>
+              <div className={`organization${chapter.organizationLogo ? " organization-with-logo" : ""}`}>{chapter.organizationLogo && <OrganizationLogo organization={chapter.organizationLogo}/>}<div className="organization-copy"><strong>{chapter.organization}</strong><span>{chapter.dates}</span></div></div>
               <div className="facts-stat"><ul className="facts">{chapter.facts.map(f => <li key={f}>{f}</li>)}</ul><div className="stat-card"><span className="stat-spark">✳</span><strong>{chapter.stat}</strong><span>{chapter.statLabel}</span></div></div>
               <div className="takeaway"><Leaf size={18}/><p>{chapter.takeaway}</p></div>
               <a className="source-link" href={RESUME_URL} target="_blank" rel="noreferrer">From Nicole’s supplied resume <ExternalLink size={11}/></a>

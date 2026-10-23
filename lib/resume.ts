@@ -1,8 +1,9 @@
+import type { OrganizationId } from "@/components/organization-logo";
 export const RESUME_URL = "/resume";
 export const SOURCE_URL = "https://docs.google.com/document/d/14FkVc8HM-SQ0HEe3S8xktnZvwkQxt_3o/edit";
 export type Chapter = {
   id: string; label: string; eyebrow: string; title: string; intro: string;
-  dates: string; organization: string; facts: string[]; takeaway: string;
+  dates: string; organization: string; organizationLogo?: OrganizationId; facts: string[]; takeaway: string;
   stat: string; statLabel: string; questions: string[]; welcome: string;
 };
 // Shared source facts keep the printable resume and Scout aligned.
@@ -14,7 +15,7 @@ export const education = {
 };
 export const workExperience = [
   {
-    id: "kizuki", organization: "Kizuki Ramen · San Francisco", dates: "May 2026 – Present",
+    id: "kizuki", organizationLogo: "kizuki" as const, organization: "Kizuki Ramen · San Francisco", dates: "May 2026 – Present",
     role: "Hostess · Expo · Barback · Inventory management",
     facts: [
       "Hired as a hostess and quickly took on responsibilities across the front of house, including expo, inventory management, and barback duties.",
@@ -25,7 +26,7 @@ export const workExperience = [
     ]
   },
   {
-    id: "shake-shack", organization: "Shake Shack · San Francisco", dates: "December 2022 – May 2026", role: "Cross-Trainer",
+    id: "shake-shack", organizationLogo: "shake-shack" as const, organization: "Shake Shack · San Francisco", dates: "December 2022 – May 2026", role: "Cross-Trainer",
     facts: [
       "Joined the branch-opening team and was promoted to Trainer within one year.",
       "Operated as a shift lead from 2023, responsible for store-wide efficiency across 10+ team members.",
@@ -50,7 +51,7 @@ export const chapters: Chapter[] = [
     id: "hello", label: "Meet Nicole", eyebrow: "01 / A little introduction",
     title: "People-first.\nCuriosity-led.",
     intro: "Nicole connects people, keeps busy teams moving, and learns by building. From running expo at Kizuki Ramen to creating an interactive resume agent, she pairs customer-facing experience with technical curiosity.",
-    dates: "The story so far", organization: "Nicole Leon",
+    dates: education.classYear, organization: education.school, organizationLogo: "sf-state",
     facts: ["B.S. Business Administration, Information Systems concentration; AI minor at San Francisco State University, Class of 2026.", "A 4.00 major GPA, with three Dean’s List distinctions.", "Experience in customer service, team training, and operational ownership at Kizuki Ramen and Shake Shack.", "Five projects spanning AI, web apps, and databases, plus a prompt-engineering certificate from CognitiveClass.AI."],
     takeaway: "SDR connection: clear communication, follow-through, and curiosity about how technology solves problems. Nicole’s experience gives us concrete examples to explore.",
     stat: "4.00", statLabel: "major GPA · SF State",
@@ -61,7 +62,7 @@ export const chapters: Chapter[] = [
     id: "people", label: "Connecting", eyebrow: "02 / Communication in motion",
     title: "Keep people connected.\nKeep things moving.",
     intro: "Hired as a hostess at Kizuki Ramen, Nicole quickly took on more across the front of house. Running expo puts her at the center of communication between the dining room and the kitchen.",
-    dates: workExperience[0].dates, organization: workExperience[0].organization,
+    dates: workExperience[0].dates, organization: workExperience[0].organization, organizationLogo: "kizuki",
     facts: ["Typically oversees 80–170 orders per hour, managing ticket times and checking accuracy before orders go out.", "Coordinates dine-in and to-go orders while connecting front-of-house and back-of-house teams.", "Expanded her role to include expo, barback duties, and inventory management.", "Contributed to $1M in location sales during her tenure, averaging $9k per evening shift; the team’s location became the most profitable of six under its Area Director."],
     takeaway: "SDR connection: communicate clearly under pressure, coordinate handoffs, and keep the customer experience in focus. The sales figures reflect the location’s team performance.",
     stat: "80–170", statLabel: "orders per hour typically overseen at expo",
@@ -72,7 +73,7 @@ export const chapters: Chapter[] = [
     id: "leadership", label: "Stepping up", eyebrow: "03 / Trust, earned over time",
     title: "Show up. Step up.\nBring others along.",
     intro: "Nicole joined a new Shake Shack location’s opening team and became a trainer within a year. As a cross-trainer, she took ownership of product quality and stepped into station gaps when service got busy.",
-    dates: workExperience[1].dates, organization: workExperience[1].organization,
+    dates: workExperience[1].dates, organization: workExperience[1].organization, organizationLogo: "shake-shack",
     facts: ["Operated as a shift lead from 2023, responsible for store-wide efficiency across 10+ team members.", "Trained five new and existing team members in procedures and operational excellence.", "Promoted to cross-trainer in 2025 and offered the opportunity to help open new branches.", "Reviewed orders before they reached customers and filled station gaps during busy hours.", "During her tenure, the location became #1 among 10 Bay Area branches by efficiency (profit)—a team achievement."],
     takeaway: "SDR connection: take ownership, maintain standards under pressure, and help others perform. Her promotions show increasing responsibility and trust.",
     stat: "10+", statLabel: "team members across her shifts",
@@ -83,7 +84,7 @@ export const chapters: Chapter[] = [
     id: "systems", label: "Thinking ahead", eyebrow: "04 / Anticipate what comes next",
     title: "Notice the details.\nPlan a step ahead.",
     intro: "At Kizuki Ramen, Nicole’s responsibilities extend beyond the current shift. She forecasts next week’s stock needs and makes inventory easier for the team to see and manage.",
-    dates: workExperience[0].dates, organization: workExperience[0].organization,
+    dates: workExperience[0].dates, organization: workExperience[0].organization, organizationLogo: "kizuki",
     facts: ["Forecasts when drinks, condiments, syrups, napkins, and to-go packaging need replenishing for the next week.", "Reorganized the station so stock levels could be identified at a glance.", "Took on inventory management alongside hostess, expo, and barback responsibilities."],
     takeaway: "SDR connection: anticipate needs, keep information clear, and follow through on the details. Her inventory work is a practical example of operational ownership.",
     stat: "1 week", statLabel: "ahead when planning stock replenishment",
@@ -94,7 +95,7 @@ export const chapters: Chapter[] = [
     id: "builder", label: "Staying curious", eyebrow: "05 / Curiosity, put into practice",
     title: "Not just wondering.\nActually building.",
     intro: "Nicole’s Information Systems concentration and AI minor meet hands-on projects—including the resume agent you’re using. Her learning spans AI, practical web apps, and databases.",
-    dates: "2025 – 2026", organization: "SF State · Personal projects",
+    dates: "2025 – 2026", organization: "SF State · Personal projects", organizationLogo: "sf-state",
     facts: ["Resume Agent (October 2026): an interactive guide to her experience, listing LangChain, Vercel, and the OpenAI SDK.", "Study App: tasks, timer, radio, and themes. Personal Finance Tracker: transactions, budgets, accounts, and data import/export.", "MySQL projects: BART maintenance tracking and bookstore inventory and popularity analysis.", "Prompt Engineering certificate from CognitiveClass.AI; skills also include SAP and MySQL.", "Coursework includes AI (listed as current), Building Business Apps with Python (A), and Business Communications (A)."],
     takeaway: "SDR connection: building with AI and learning technical tools gives her practical context for conversations with developers and technical buyers.",
     stat: "5", statLabel: "projects connecting ideas to practice",
