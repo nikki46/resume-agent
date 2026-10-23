@@ -62,7 +62,7 @@ export default function ScoutExperience() {
         <div className="hero-copy">
           <div className="eyebrow" data-reveal><span className="green-dot"/> PEOPLE-FIRST. CURIOSITY-LED.</div>
           <h1 id="hero-title" data-reveal data-reveal-delay="70">Nicole<br/><em>Leon.</em></h1><p className="hero-tagline" data-reveal data-reveal-delay="130">A people person.<br/>A problem solver. A builder.</p>
-          <p className="hero-description" data-reveal data-reveal-delay="180">From connecting busy teams at Kizuki Ramen to building with AI, get to know the communication, ownership, and curiosity Nicole brings to her next chapter.</p>
+          <p className="hero-description" data-reveal data-reveal-delay="180">Nicole is a business student with a 4.0 major GPA and shift-lead experience at Shake Shack. Her curiosity about agentic AI and its real-world applications led her to pursue an AI minor and build this interactive resume agent.</p>
           <div className="hero-actions" data-reveal data-reveal-delay="220"><button className="button primary" onClick={() => go(0, true)}>Explore Nicole’s story <ArrowRight size={17}/></button><span>6 chapters · your pace</span></div>
           <div className="application-note"><span className="note-line"/> An interactive resume for an <strong>SDR role at LangChain</strong></div>
         </div>

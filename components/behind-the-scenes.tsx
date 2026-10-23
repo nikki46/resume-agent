@@ -10,7 +10,7 @@ const stack = [
 export default function BehindTheScenes() {
   return <section className="behind-scenes page-width" aria-labelledby="behind-scenes-title">
     <div className="behind-scenes-heading" data-reveal>
-      <div><span className="eyebrow muted">BEHIND THE SCENES</span><h2 id="behind-scenes-title">A resume. A conversation. A little AI.</h2></div>
+      <div><span className="eyebrow muted">THE PROJECT</span><h2 id="behind-scenes-title">Behind the scenes: Meet Scout</h2></div>
       <a className="text-link" href="https://github.com/nikki46/resume-agent" target="_blank" rel="noreferrer">Explore the code <ArrowUpRight size={16} aria-hidden="true"/></a>
     </div>
     <p className="behind-scenes-intro" data-reveal>You’re exploring one of Nicole’s projects: an interactive resume that pairs a guided story with an AI agent. Here’s what makes Scout work.</p>
