@@ -134,7 +134,8 @@ footer p,footer button{font-size:13px}
  .chapter-tab{padding:12px 0}
  .journey-grid{height:min(740px,calc(100dvh - 245px));margin-top:16px;gap:30px}
  .story-panel{min-height:0;height:100%}
- .story-panel article{min-height:0;overflow-y:auto;padding-right:10px;scrollbar-width:thin;scrollbar-color:#cbd5be transparent;overscroll-behavior:contain}
+ /* Let scrolling continue onto the page when the chapter fits or reaches an edge. */
+ .story-panel article{min-height:0;overflow-y:auto;padding-right:10px;scrollbar-width:thin;scrollbar-color:#cbd5be transparent;overscroll-behavior:auto}
  .story-top{min-height:32px}
  .chapter-symbol{width:32px;height:32px}
  .chapter-symbol svg{width:18px;height:18px}
