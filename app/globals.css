@@ -166,3 +166,14 @@ footer p,footer button{font-size:13px}
  .chat-disclaimer{margin-top:6px}
  .pause-note{margin-top:12px;font-size:14px;line-height:1.5}
 }
+
+/* Scout's small hello: a blink, a curious tilt, and a friendly tail swish. */
+.scout-lion .scout-head{transform-box:view-box;transform-origin:80px 105px;animation:scout-head-hello 9s ease-in-out 1.2s infinite}
+.scout-lion .scout-eyes{transform-box:view-box;transform-origin:80px 64px;animation:scout-blink 7s ease-in-out 2s infinite}
+.scout-lion .scout-tail{transform-box:view-box;transform-origin:106px 124px;animation:scout-tail-swish 9s ease-in-out 1.2s infinite}
+.scout-avatar .scout-head,.scout-avatar .scout-tail{animation-delay:4.5s}
+.scout-avatar .scout-eyes{animation-delay:3.5s}
+@keyframes scout-head-hello{0%,18%,100%{transform:rotate(0)}5%{transform:rotate(-7deg)}11%{transform:rotate(4deg)}}
+@keyframes scout-blink{0%,43%,48%,100%{transform:scaleY(1)}45%,46%{transform:scaleY(.12)}}
+@keyframes scout-tail-swish{0%,23%,100%{transform:rotate(0)}5%,15%{transform:rotate(9deg)}10%,20%{transform:rotate(-7deg)}}
+@media(prefers-reduced-motion:reduce){.scout-lion .scout-head,.scout-lion .scout-eyes,.scout-lion .scout-tail{animation:none;transform:none}}
