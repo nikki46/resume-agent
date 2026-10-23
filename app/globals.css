@@ -215,3 +215,42 @@ footer p,footer button{font-size:13px}
 .behind-scenes-note p{font-size:13px;line-height:1.7;max-width:1000px}
 @media(max-width:900px){.behind-scenes-grid{grid-template-columns:1fr;gap:24px}.scout-flow{padding:23px 0 0;border-left:0;border-top:1px solid #d7decb}.behind-scenes-heading{align-items:flex-start;flex-direction:column;gap:15px}}
 @media(max-width:520px){.behind-scenes{padding:23px 20px;margin-top:32px}.behind-scenes h2{font-size:29px}.tech-stack{grid-template-columns:1fr}.tech-stack li{padding:14px}.tech-stack p,.scout-flow p{font-size:15px}.behind-scenes-note p,.behind-scenes .stack-detail{font-size:14px}}
+
+/* One-time reveals: progressive enhancement, with no scroll interception. */
+[data-reveal].is-revealed{animation:page-unfold .72s cubic-bezier(.2,.7,.2,1) var(--reveal-delay,0ms) both}
+[data-reveal]:focus-within{animation:none}
+@keyframes page-unfold{from{opacity:0;transform:translateY(24px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+/* Scout is a small, keyboard-accessible playground. */
+.scout-playful{position:relative;display:block;width:100%;isolation:isolate}
+.scout-play-button{position:relative;display:block;width:100%;min-width:44px;min-height:44px;padding:0;border-radius:50%;cursor:pointer;touch-action:manipulation}
+.scout-play-button:focus-visible{outline:3px solid #b18b32;outline-offset:5px}
+.scout-reaction{display:block;transform-origin:50% 88%}
+.scout-reaction svg{display:block;width:100%;height:auto}
+.scout-play-button:hover .scout-reaction:not([class*="scout-reaction--"]){transform:rotate(-6deg) scale(1.05);transition:transform .2s ease}
+.scout-play-hint{display:block;font-size:11px;color:#69795d;white-space:nowrap;text-align:center;margin-top:7px}
+.scout-reaction-caption{position:absolute;z-index:5;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);width:max-content;max-width:190px;pointer-events:none;font-size:12px;line-height:1.5;font-weight:600;text-align:center;color:#36543c;background:#fffdf1;border:1px solid #d9dfcd;border-radius:12px;padding:0;opacity:0;box-shadow:0 4px 15px #24482d0c}
+.scout-reaction-caption.is-visible{opacity:1;padding:8px 11px}
+.guide-introduction-mascot .scout-reaction-caption{left:0;transform:none}
+.scout-reaction--hop{animation:scout-happy-hop 1.3s cubic-bezier(.3,.7,.3,1) both}
+.scout-reaction--twirl{animation:scout-happy-twirl 1.25s cubic-bezier(.3,.7,.3,1) both}
+.scout-reaction--dance{animation:scout-happy-dance 1.35s ease-in-out both}
+.scout-sparkles{position:absolute;inset:0;pointer-events:none}
+.scout-sparkles>span{position:absolute;left:50%;top:45%;color:#b79740;font-size:19px;line-height:1;opacity:0;animation:scout-sparkle-pop 1.1s ease-out .12s both;--spark-x:-45px;--spark-y:-45px}
+.scout-sparkles>span:nth-child(2){--spark-x:46px;--spark-y:-38px;animation-delay:.2s;color:#80965d}
+.scout-sparkles>span:nth-child(3){--spark-x:-52px;--spark-y:6px;animation-delay:.15s}
+.scout-sparkles>span:nth-child(4){--spark-x:48px;--spark-y:20px;animation-delay:.3s;color:#80965d}
+.scout-sparkles>span:nth-child(5){--spark-x:4px;--spark-y:-62px;animation-delay:.25s}
+.scout-sparkles>span:nth-child(6){--spark-x:-12px;--spark-y:36px;animation-delay:.18s;color:#80965d}
+.scout-playful.is-playing .scout-head,.scout-playful.is-playing .scout-tail{animation:none}
+.scout-avatar{width:44px;height:44px}
+.scout-avatar .scout-playful{--scout-hop:-9px}
+.scout-avatar .scout-reaction-caption{left:0;bottom:auto;top:calc(100% + 7px);transform:none;max-width:180px}
+.scout-avatar .scout-sparkles{transform:scale(.6)}
+.scout-playful.dialog-scout{width:75px}
+.dialog-scout .scout-reaction-caption{left:auto;right:0;transform:none}
+@keyframes scout-happy-hop{0%,100%{transform:translateY(0) scale(1)}15%{transform:translateY(3px) scale(1.12,.88)}38%{transform:translateY(var(--scout-hop,-28px)) rotate(-9deg) scale(.95,1.05)}58%{transform:translateY(0) scale(1.1,.9)}76%{transform:translateY(calc(var(--scout-hop,-28px) * .4)) rotate(6deg)}90%{transform:scale(1.04,.96)}}
+@keyframes scout-happy-twirl{0%{transform:rotate(0) scale(1)}100%{transform:rotate(360deg) scale(1)}18%{transform:rotate(-18deg) scale(.92)}65%{transform:rotate(368deg) scale(1.1)}82%{transform:rotate(354deg) scale(.98)}99%{transform:rotate(360deg)}}
+@keyframes scout-happy-dance{0%,100%{transform:rotate(0) translateY(0)}15%,45%,75%{transform:rotate(-15deg) translateY(-5px)}30%,60%,90%{transform:rotate(15deg) translateY(-5px)}}
+@keyframes scout-sparkle-pop{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}25%{opacity:1}80%{opacity:.8}100%{opacity:0;transform:translate(var(--spark-x),var(--spark-y)) scale(1.1) rotate(40deg)}}
+@media(prefers-reduced-motion:reduce){[data-reveal].is-revealed{animation:none;opacity:1;transform:none}.scout-reaction,.scout-play-button:hover .scout-reaction:not([class*="scout-reaction--"]){animation:none;transition:none;transform:none}.scout-sparkles{display:none}}
