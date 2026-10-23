@@ -5,10 +5,12 @@ export default function ScoutLion({ className = "", happy = false }: { className
     <path d="M106 124c29 4 30-25 19-29" stroke="#c58b45" strokeWidth="8" strokeLinecap="round"/>
     <path d="M124 95q-13-14 0-19 13 4 0 19" fill="#93603b"/>
     </g>
+    <g className="scout-body">
     <ellipse cx="80" cy="117" rx="29" ry="28" fill="#e8b964"/>
     <ellipse cx="80" cy="122" rx="17" ry="20" fill="#fae0a3"/>
-    <ellipse cx="59" cy="139" rx="15" ry="8" fill="#e8b964"/><ellipse cx="101" cy="139" rx="15" ry="8" fill="#e8b964"/>
-    <path d="M53 139h12m30 0h12" stroke="#bc884c" strokeWidth="2" strokeLinecap="round"/>
+    </g>
+    <g className="scout-paw-left"><ellipse cx="59" cy="139" rx="15" ry="8" fill="#e8b964"/><path d="M53 139h12" stroke="#bc884c" strokeWidth="2" strokeLinecap="round"/></g>
+    <g className="scout-paw-right"><ellipse cx="101" cy="139" rx="15" ry="8" fill="#e8b964"/><path d="M95 139h12" stroke="#bc884c" strokeWidth="2" strokeLinecap="round"/></g>
     <g className="scout-head">
     <path d="M80 18c9-7 21-2 25 6 13-2 23 7 23 19 12 6 15 19 8 29 6 12 0 24-12 28-3 13-16 19-27 13-10 9-24 9-34 0-12 5-24-2-27-14-12-4-18-17-11-28-6-11-2-24 10-29 0-12 10-20 23-18 5-9 15-13 22-6Z" fill="#ad7143"/>
     <circle cx="45" cy="45" r="14" fill="#e8b964"/><circle cx="115" cy="45" r="14" fill="#e8b964"/>
@@ -19,8 +21,16 @@ export default function ScoutLion({ className = "", happy = false }: { className
     <ellipse cx="54" cy="76" rx="7" ry="4" fill="#df986d" opacity=".7"/><ellipse cx="106" cy="76" rx="7" ry="4" fill="#df986d" opacity=".7"/>
     <ellipse cx="71" cy="84" rx="12" ry="10" fill="#ffebbc"/><ellipse cx="89" cy="84" rx="12" ry="10" fill="#ffebbc"/>
     <path d="M74 76q6-4 12 0l-6 7Z" fill="#654832"/>
-    <path d="M80 83v5m0 0q-5 6-10 0m10 0q5 6 10 0" stroke="#654832" strokeWidth="2.5" strokeLinecap="round"/>
+    <g className="scout-mouth-open"><ellipse cx="80" cy="89" rx="10" ry="11" fill="#654832"/><ellipse cx="80" cy="95" rx="6" ry="4" fill="#e5a09a"/><path d="m73 81 3 5 2-6m4 0 2 6 3-5" fill="#fff5d9"/></g>
+    <path className="scout-smile" d="M80 83v5m0 0q-5 6-10 0m10 0q5 6 10 0" stroke="#654832" strokeWidth="2.5" strokeLinecap="round"/>
     </g>
     <path d="m62 108 18 7 18-7-5 13H67Z" fill="#365a45"/><path d="m82 116 9 18 7-8-9-12" fill="#365a45"/>
+    <g className="scout-swat-paw">
+      <path d="M98 127q18-5 19-24" stroke="#e8b964" strokeWidth="13" strokeLinecap="round"/>
+      <ellipse cx="117" cy="98" rx="13" ry="15" fill="#f2cc80"/>
+      <ellipse cx="117" cy="102" rx="6" ry="5" fill="#d59b61"/>
+      <circle cx="110" cy="93" r="3" fill="#d59b61"/><circle cx="117" cy="89" r="3" fill="#d59b61"/><circle cx="124" cy="93" r="3" fill="#d59b61"/>
+    </g>
+    <g className="scout-roar-lines" stroke="#b79740" strokeWidth="3" strokeLinecap="round"><path d="m20 73-10-4m10 16H7m15 10-10 5m128-31 10-4m-10 16h13m-15 14 10 5"/></g>
   </svg>;
 }
