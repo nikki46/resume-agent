@@ -6,6 +6,7 @@ import { chapters, RESUME_URL, CONTACT_EMAIL } from "@/lib/resume";
 import PlayfulScout from "./playful-scout";
 import { useScrollReveals } from "./use-scroll-reveals";
 import BehindTheScenes from "./behind-the-scenes";
+import JourneyArt from "./journey-art";
 import OrganizationLogo from "./organization-logo";
 
 type Message = { role: "user" | "assistant"; content: string; chapter?: string; sources?: string[]; suggestedChapter?: string; error?: boolean; mode?: "live" | "resume-note" };
@@ -57,7 +58,7 @@ export default function ScoutExperience() {
       <nav aria-label="Main navigation"><button className="text-link" onClick={() => go(active, true)}>Explore her story <ArrowDown size={14}/></button><a className="resume-link" href={RESUME_URL} target="_blank" rel="noreferrer">View resume <ArrowUpRight size={15}/></a></nav>
     </header>
     <main id="top">
-      <section className="hero hero-without-photo page-width" aria-labelledby="hero-title">
+      <section className="hero page-width" aria-labelledby="hero-title">
         <div className="hero-copy">
           <div className="eyebrow" data-reveal><span className="green-dot"/> PEOPLE-FIRST. CURIOSITY-LED.</div>
           <h1 id="hero-title" data-reveal data-reveal-delay="70">Nicole<br/><em>Leon.</em></h1><p className="hero-tagline" data-reveal data-reveal-delay="130">A people person.<br/>A problem solver. A builder.</p>
@@ -65,6 +66,7 @@ export default function ScoutExperience() {
           <div className="hero-actions" data-reveal data-reveal-delay="220"><button className="button primary" onClick={() => go(0, true)}>Explore Nicole’s story <ArrowRight size={17}/></button><span>6 chapters · your pace</span></div>
           <div className="application-note"><span className="note-line"/> An interactive resume for an <strong>SDR role at LangChain</strong></div>
         </div>
+        <JourneyArt/>
       </section>
       <section className="guide-introduction page-width" aria-labelledby="scout-introduction-title">
         <div className="guide-introduction-mascot" data-reveal><PlayfulScout happy label="Play with Scout in the introduction"/></div>
