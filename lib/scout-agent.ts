@@ -8,12 +8,28 @@ export function getScoutEvidence() {
   return process.env.SCOUT_HOSTING === "langsmith" ? { ...evidence, langchain: evidence.langchain.replace("is hosted on Vercel", "has a separate copy hosted on LangSmith"), projectArchitecture: "The website and Scout run on LangSmith Agent Server. Next.js exports the React interface, Hono serves it with the chat API, and LangGraph runs the LangChain agent with OpenAI. LangSmith records model and tool traces for debugging and evaluation. A curated evaluation dataset checks grounding, unsupported claims, and useful chapter suggestions. Chat history resets in the browser on reload, but diagnostic traces may be retained in LangSmith. The separate Vercel copy remains available. Resume facts are maintained in code, not fetched from Google Docs per question. Built with assistance." } : evidence;
 }
 
+// Direct navigation requests are UI intent, so resolve clear chapter names deterministically.
+function requestedChapter(question: string): string | undefined {
+  if (!/\b(show|open|take me to|go to|see)\b[\s\S]*\b(chapter|section)\b/i.test(question)) return;
+  const matches = [
+    ["hello", /\b(overview|introduction|meet nicole)\b/i],
+    ["people", /\b(communication|connecting)\b/i],
+    ["leadership", /\b(leadership|shake shack|stepping up)\b/i],
+    ["systems", /\b(inventory|systems|thinking ahead)\b/i],
+    ["builder", /\b(projects|building|staying curious)\b/i],
+    ["next", /\b(sdr|next chapter)\b/i],
+  ] as const;
+  const found = matches.filter(([, pattern]) => pattern.test(question));
+  return found.length === 1 ? found[0][0] : undefined;
+}
+
 export type ScoutInput = { chapter: string; messages: { role: "user" | "assistant"; content: string }[] };
 export type ScoutAnswer = { answer: string; sources: string[]; suggestedChapter?: string; mode: "live" };
 export async function answerScout(input: ScoutInput, config?: RunnableConfig): Promise<ScoutAnswer> {
   const { chapter, messages } = input;
   const key = process.env.OPENAI_API_KEY;
   if (!key) throw new Error("OPENAI_API_KEY is required for live Scout answers");
+  const explicitChapter = requestedChapter(messages.at(-1)?.content || "");
   let suggestedChapter: string | undefined;
   const sources = new Set<string>([chapter]);
   const lookup = tool(({ chapterId }) => { sources.add(chapterId); return JSON.stringify(chapters.find(c => c.id === chapterId)); }, {
@@ -32,6 +48,6 @@ AUTHORITATIVE EVIDENCE: ${JSON.stringify(getScoutEvidence())}`;
     const last = result.messages.at(-1);
     const answer = typeof last?.content === "string" ? last.content : Array.isArray(last?.content) ? last.content.filter(b => b.type === "text").map(b => b.text).join("\n") : "";
     if (!answer.trim()) throw new Error("Empty answer");
-    return { answer, sources: [...sources], suggestedChapter, mode: "live" as const };
+    return { answer, sources: [...sources], suggestedChapter: explicitChapter || suggestedChapter, mode: "live" as const };
 
 }
