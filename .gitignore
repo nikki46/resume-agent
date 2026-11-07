@@ -46,3 +46,7 @@ yarn-error.log*
 
 # Vercel local project configuration
 /.vercel/
+
+# LangSmith local builds and development state
+/.langsmith-build/
+/.langgraph_api/

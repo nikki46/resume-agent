@@ -1,10 +1,11 @@
+import { isLangSmith } from "@/lib/hosting";
 import { ArrowUpRight, Code2, Link2, MessageCircle, Sparkles, Cloud } from "lucide-react";
 
 const stack = [
   { name: "Next.js + React", detail: "The interactive resume and chat interface.", icon: Code2 },
   { name: "LangChain", detail: "Connects the AI model with resume lookup and chapter tools.", icon: Link2 },
   { name: "OpenAI", detail: "Generates conversational replies from the supplied context.", icon: Sparkles },
-  { name: "Vercel", detail: "Hosts the website and runs Scout’s server-side requests.", icon: Cloud },
+  { name: isLangSmith ? "LangSmith" : "Vercel", detail: isLangSmith ? "Hosts the site and agent, records traces, and supports quality evaluations." : "Hosts the website and runs Scout’s server-side requests.", icon: Cloud },
 ];
 
 export default function BehindTheScenes() {
@@ -22,7 +23,7 @@ export default function BehindTheScenes() {
         <li data-reveal data-reveal-delay="160"><span aria-hidden="true">03</span><div><strong>The conversation continues.</strong><p>OpenAI generates a reply. Scout can point you to a relevant chapter; you decide where to go next.</p></div></li>
       </ol></div>
     </div>
-    <div className="behind-scenes-note" data-reveal><BookNote/><p>Designed to stay grounded in the resume and acknowledge missing details. If live AI is unavailable, suggested questions offer clearly labeled prepared notes. Built with assistance; the app doesn’t save chats to a database.</p></div>
+    <div className="behind-scenes-note" data-reveal><BookNote/><p>Designed to stay grounded in the resume and acknowledge missing details. If live AI is unavailable, suggested questions offer clearly labeled prepared notes. Built with assistance. {isLangSmith ? "Conversations are recorded in LangSmith traces for debugging and evaluation; clearing this screen does not delete traces." : "The app doesn’t save chats to a database."}</p></div>
   </section>;
 }
 

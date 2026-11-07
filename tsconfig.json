@@ -48,6 +48,8 @@
     ".wrangler",
     ".sites-runtime",
     "outputs",
-    "work"
+    "work",
+    ".langsmith-build",
+    ".langgraph_api"
   ]
 }
