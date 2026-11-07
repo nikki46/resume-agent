@@ -65,7 +65,7 @@ const results = await evaluate(async (input: ScoutInput) => {
   ],
 });
 const totals = new Map<string, { passed: number; total: number }>();
-for await (const row of results) {
+for (const row of results.results) {
   for (const score of row.evaluationResults.results) {
     if (typeof score.score !== "number") continue;
     const tally = totals.get(score.key) || { passed: 0, total: 0 };
@@ -74,4 +74,4 @@ for await (const row of results) {
   }
 }
 for (const [key, value] of totals) console.log(`${key}: ${value.passed}/${value.total}`);
-if ([...totals.values()].some(v => v.passed < v.total)) process.exitCode = 1;
+if (results.results.length !== cases.length || totals.size === 0 || [...totals.values()].some(v => v.passed < v.total)) process.exitCode = 1;
