@@ -27,13 +27,14 @@ export async function handleChat(request: Request, answer: (input: ScoutInput) =
   } catch { return json({ error: "Please send a valid question." }, 400); }
   if (!parsed.success || parsed.data.messages.at(-1)?.role !== "user") return json({ error: "Please ask a question of up to 1,000 characters." }, 400);
   if (parsed.data.messages.at(-1)!.content.length > 1000) return json({ error: "Please keep your question under 1,000 characters." }, 400);
-  const fallback = resumeNotes[parsed.data.messages.at(-1)!.content];
+  const preparedNote = resumeNotes[parsed.data.messages.at(-1)!.content];
+  const fallback = process.env.SCOUT_HOSTING === "langsmith" ? preparedNote?.replace("is hosted on Vercel", "has a separate copy hosted on LangSmith, with tracing and evaluations") : preparedNote;
   const offline = () => fallback ? json({ answer: fallback, sources: [parsed.data.chapter], mode: "resume-note" }) : json({ error: "Scout’s live conversation is temporarily unavailable. Try one of the suggested questions for a prepared resume note, or keep exploring the chapters." }, 503);
   const key = envValue("OPENAI_API_KEY");
   if (!key) return offline();
-  // Best-effort per-isolate limits; no visitor identity or conversation is persisted.
+  // Best-effort per-instance counters. LangSmith separately retains diagnostic traces.
   const now = Date.now();
-  const ip = (process.env.VERCEL ? request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() : request.headers.get("cf-connecting-ip")) || "local";
+  const ip = process.env.SCOUT_HOSTING === "langsmith" ? "public-site" : (process.env.VERCEL ? request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() : request.headers.get("cf-connecting-ip")) || "local";
   for (const [id, b] of rateBuckets) if (now - b.start > 60000) rateBuckets.delete(id);
   const bucket = rateBuckets.get(ip) || { start: now, count: 0 };
   if (now - globalBucket.start > 3600000) globalBucket = { start: now, count: 0 };
