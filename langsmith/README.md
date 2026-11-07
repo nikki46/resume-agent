@@ -41,6 +41,10 @@ The local Agent Server serves both website and chat at port 2024. Local developm
 
 ## Cloud deployment
 
+The deployed copy is available at [Nicole's LangSmith site](https://nicole-leon-resume-8bd62bd4753a52e8b51d7d24dac3ba4a.us.langgraph.app). Its deployment ID is `2814d2ce-a6f1-4d2a-b0f7-5bf58b9c183d`. Source lives on `langsmith-hosting`; `main` continues to serve the existing Vercel copy.
+
+Production traces are available in [Nicole's LangSmith projects](https://smith.langchain.com/o/90d2a04e-e6a3-4387-8038-fee41ccca668/a/nicole-leon-resume/projects), under `nicole-leon-resume-production`.
+
 With a paid workspace that supports deployments:
 
 ```
@@ -64,6 +68,8 @@ The dataset name contains a content hash, making reruns reuse the same fixtures 
 For a hosted run, set `SCOUT_EVAL_URL` to the verified HTTPS deployment origin in the ignored environment file. The evaluator calls authenticated `/runs/wait` using the exported `scout` graph, rather than bypassing the app with an unrelated test implementation. It never treats prepared notes as live model success. The evaluation script exits nonzero when any scored check fails. Normal experiment runs use two concurrent requests and do not run automatically on visitor traffic.
 
 ## Retention and limitations
+
+The hosted baseline experiment [scout-grounding-1e4eaa6c](https://smith.langchain.com/o/90d2a04e-e6a3-4387-8038-fee41ccca668/datasets/ddd4db1e-28d4-4dc3-a305-1d39540c9765/compare?selectedSessions=ff0e3564-c3ef-49a9-8fba-4622c14e7a39) passed all 12 live-answer, source, grounding, and case-rubric checks, plus the explicit chapter-navigation check. The public HTTP contract checks also passed with a live answer; built-in Agent Server routes rejected unauthenticated access.
 
 The visitor UI still clears on reload. LangSmith records inputs, outputs, tool calls, and other diagnostics; workspace retention settings govern those records. Cloud graph endpoints may also use the platform's run/thread storage. Restrict workspace access and configure retention there. Do not describe the LangSmith copy as having no stored conversations.
 
