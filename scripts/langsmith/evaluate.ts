@@ -1,5 +1,6 @@
 import { Client } from "langsmith";
 import { evaluate } from "langsmith/evaluation";
+import { getCurrentRunTree } from "langsmith/traceable";
 import { ChatOpenAI } from "@langchain/openai";
 import { z } from "zod";
 import { createHash } from "node:crypto";
@@ -32,7 +33,7 @@ const results = await evaluate(async (input: ScoutInput) => {
     const url = new URL(process.env.SCOUT_EVAL_URL);
     if (url.protocol !== "https:") throw new Error("SCOUT_EVAL_URL must use HTTPS");
     const response = await fetch(new URL("/runs/wait", url), {
-      method: "POST", headers: { "Content-Type": "application/json", "X-Api-Key": process.env.LANGSMITH_API_KEY! },
+      method: "POST", headers: { ...getCurrentRunTree().toHeaders(), "Content-Type": "application/json", "X-Api-Key": process.env.LANGSMITH_API_KEY! },
       body: JSON.stringify({ assistant_id: "scout", input, config: { recursion_limit: 10, tags: ["regression-eval"] } }),
       signal: AbortSignal.timeout(50000),
     });
