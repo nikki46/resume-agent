@@ -74,4 +74,12 @@ for (const row of results.results) {
   }
 }
 for (const [key, value] of totals) console.log(`${key}: ${value.passed}/${value.total}`);
-if (results.results.length !== cases.length || totals.size === 0 || [...totals.values()].some(v => v.passed < v.total)) process.exitCode = 1;
+const expected = new Map([
+  ["live_answer", cases.length], ["valid_sources", cases.length],
+  ["grounded", cases.length], ["rubric_satisfied", cases.length],
+  ["chapter_suggestion", cases.filter(c => "suggestedChapter" in c).length],
+]);
+if (results.results.length !== cases.length || [...expected].some(([key, count]) => {
+  const tally = totals.get(key);
+  return !tally || tally.total !== count || tally.passed !== count;
+})) process.exitCode = 1;
