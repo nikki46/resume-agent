@@ -17,7 +17,11 @@
     "start:vercel": "next start --port 3000",
     "build:langsmith": "node scripts/langsmith/build-ui.mjs",
     "dev:langsmith": "langgraphjs dev --no-browser --no-reload",
-    "eval:langsmith": "node --env-file=.env.langsmith --import tsx scripts/langsmith/evaluate.ts"
+    "eval:langsmith": "node --env-file=.env.langsmith --import tsx scripts/langsmith/evaluate.ts",
+    "demo:setup": "node --env-file=.env.langsmith --import tsx scripts/langsmith/setup-demo.ts",
+    "demo:traces": "node --env-file=.env.langsmith --import tsx scripts/langsmith/run-demo.ts traces",
+    "demo:compare": "node --env-file=.env.langsmith --import tsx scripts/langsmith/run-demo.ts experiments",
+    "demo:guide": "node --env-file=.env.langsmith --import tsx scripts/langsmith/publish-demo-guide.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

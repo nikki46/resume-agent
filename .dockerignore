@@ -8,6 +8,7 @@ node_modules
 .next
 .langgraph_api
 .langsmith-build
+.langsmith-demo
 .vinext
 .wrangler
 .sites-runtime

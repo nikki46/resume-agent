@@ -50,3 +50,4 @@ yarn-error.log*
 # LangSmith local builds and development state
 /.langsmith-build/
 /.langgraph_api/
+/.langsmith-demo/
