@@ -1,5 +1,7 @@
 # Scout on LangSmith
 
+> **Retired November 7, 2026:** The LangSmith deployment, agents, automation rules, evaluator, datasets, traces, experiments, prompts, review queue, and demo dashboard were deleted at the owner's request. The local demo environment has its copied API keys removed and tracing disabled. The instructions and URLs below are an archive for possible future setup; the LangSmith URLs are no longer live. Nicole's separate Vercel site remains available. Account subscription downgrade is handled separately by the owner.
+
 This branch adds a separate LangSmith-hosted copy. It does not replace or deploy the Vercel production site. The same React interface, resume content, photo, and lion interactions are retained.
 
 ## Architecture
